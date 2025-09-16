@@ -1,9 +1,10 @@
 <template>
-  <div class="flex items-center justify-center min-h-[calc(100vh-64px)] bg-gray-50">
+  <div class="flex items-center justify-center min-h-[calc(100vh-64px)] bg-gray-100">
     <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-xl shadow-lg">
       <h2 class="text-center text-3xl font-extrabold text-gray-900">
         Sign in to your account
       </h2>
+
       <form class="mt-8 space-y-6" @submit.prevent="login">
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
@@ -49,6 +50,11 @@
             <span v-else>Sign in</span>
           </button>
         </div>
+
+        <p class="mt-4 text-center text-sm text-gray-600">
+          Don't have an account?
+          <router-link to="/register" class="text-blue-600 hover:underline">Register</router-link>
+        </p>
       </form>
     </div>
   </div>
@@ -73,13 +79,8 @@ const login = async () => {
       username: username.value,
       password: password.value,
     });
-
-    // In a real app, you would store the token and manage state here
     console.log('Login successful!', response.data);
-
-    // Redirect to the home page or a protected dashboard
     router.push('/');
-    
   } catch (err) {
     error.value = 'Invalid credentials. Please try again.';
     console.error('Login error:', err);
