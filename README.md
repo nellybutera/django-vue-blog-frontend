@@ -27,3 +27,6 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+<!-- this is how you install tailwind: npm install -D @tailwindcss/postcss autoprefixer -->
